@@ -2,9 +2,9 @@ import os
 import numpy as np
 from scipy.stats import rankdata
 from scipy.special import binom #faster than comb
-import dynamicTreeCut.df_apply
+import df_apply
 from functools import partial
-from dynamicTreeCut.R_func import *
+from R_func import *
 
 
 chunkSize = 100
