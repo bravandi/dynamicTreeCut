@@ -762,7 +762,9 @@ def cutreeHybrid(link, distM,
             SizeRank = np.array([1])
         OrdNumLabs = SizeRank[NumLabs - 1]
     else:
-        SizeRank = rankdata(-Sizes[np.arange(len(Sizes))], method="ordinal")
+        SizeRank = rankdata(-Sizes.iloc[np.arange(len(Sizes))], method="ordinal")
+        # Babak FIX
+        # SizeRank = rankdata(-Sizes[np.arange(len(Sizes))], method="ordinal")
         OrdNumLabs = SizeRank[NumLabs - 2]
     ordCoreLabels = OrdNumLabs - UnlabeledExist
     ordCoreLabels[coreLabels == 0] = 0
