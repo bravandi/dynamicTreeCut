@@ -751,6 +751,7 @@ def cutreeHybrid(link, distM,
     UnlabeledExist = np.sum(Colors == 0) > 0
     NumLabs = Colors + 1
     Sizes = table(NumLabs)  ### think about
+    Sizes = Sizes.reset_index()  # Babak fix
     if UnlabeledExist:
         if len(Sizes) > 1:
             SizeRank = np.append(1, rankdata(-Sizes[1:len(Sizes)], method="ordinal") + 1)
@@ -758,7 +759,7 @@ def cutreeHybrid(link, distM,
             SizeRank = np.array([1])
         OrdNumLabs = SizeRank[NumLabs - 1]
     else:
-        SizeRank = rankdata(-Sizes.iloc[np.arange(len(Sizes)),], method="ordinal")
+        SizeRank = rankdata(-Sizes.iloc[np.arange(len(Sizes)),], method="ordinal")  # Babak fix
         # SizeRank = rankdata(-Sizes[np.arange(len(Sizes))], method="ordinal")
         OrdNumLabs = SizeRank[NumLabs - 2]
         pass
